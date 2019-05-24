@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 // コンポーネントをインポート
-import Title from "./components/Tiltle";
+import Title from "./components/Title/Tiltle";
 
 class App extends Component {
   // イベントハンドラー
