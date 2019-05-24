@@ -5,24 +5,33 @@ import "./App.css";
 // コンポーネントをインポート
 import Title from "./components/Title/Tiltle";
 
+//class component
+//class componentは、stateを持つことのできるcomponentです。
+//event handler を定義したり、他のcomponentにpropsとして情報を渡したりできる高機能なcomponentです。
+//class componentは、両種類のcomponentをインポートすることができる
+//Reactの流儀としては 少数のclass componentがtateを管理していて、情報が必要な時だけpropsでfunctional componentに渡す
 class App extends Component {
   // イベントハンドラー
   onClickHandler = () => {
-    // h2タグを取得
-    let title = document.getElementById("versionCounter");
+    let nextVersion = parseInt(this.state.version, 10) + 1;
 
-    // upgradeのボタン
-    let upgradeButton = document.getElementById("upgradeButton");
+    // 直接変更してはいけないので setState を使う
+    this.setState({
+      version: nextVersion.toFixed(1)
+    });
+    //this.state = { version: nextVersion.toFixed(1)} // <= これはダメ
+  };
 
-    // タイトルを更新
-    title.textContent = "4.0";
-
-    // pタグ(upgradeのボタン)を非表示
-    upgradeButton.style.display = "none";
-    
+  state = {
+    version: "1.0"
   };
 
   render() {
+
+    if(parseInt(this.state.version, 10) > 1){
+      console.log('アップグレード成功！！ 新しいバージョンは　' + this.state.version);
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -37,7 +46,7 @@ class App extends Component {
               id="versionCounter"
               style={{ borderBottom: "1px solid orange" }}
             >
-              3.0
+              {this.state.version}
             </span>
           </Title>
           <a
