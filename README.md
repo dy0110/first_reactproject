@@ -1,5 +1,10 @@
 # first_reactproject
-create-react-appを試す
+create-react-appを試す  
+上限5まで数字をカウントアップする
+
+[参考](https://note.mu/natsukingdom/n/n28fe3268161c)
+
+![画像](image/wj1dm-ewaxq.gif)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

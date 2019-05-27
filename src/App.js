@@ -27,9 +27,30 @@ class App extends Component {
   };
 
   render() {
+    if (parseInt(this.state.version, 10) > 1) {
+      console.log(
+        "アップグレード成功！！ 新しいバージョンは　" + this.state.version
+      );
+    }
 
-    if(parseInt(this.state.version, 10) > 1){
-      console.log('アップグレード成功！！ 新しいバージョンは　' + this.state.version);
+    // letで変数を定義して、if文で代入する要素を入れ替える手法
+    // upgradeButton初期の要素
+    let upgradeButton = (
+      <p
+        onClick={this.onClickHandler}
+        id="upgradeButton"
+        className="upgrade-button"
+      >
+        Upgrade
+      </p>
+    );
+
+    // upgradeButton初期の要素
+    if (this.state.version === "5.0") {
+      upgradeButton = (
+        //バージョンが5.0になった時に表示されて欲しいボタン
+        <p className="upgraded-button">Already up-to-date</p>
+      );
     }
 
     return (
@@ -41,7 +62,7 @@ class App extends Component {
             titleStyle={{ color: "orange" }}
             onClick={this.onClickHandler}
           >
-            Hello World{" "}
+            Hello World{' '}
             <span
               id="versionCounter"
               style={{ borderBottom: "1px solid orange" }}
@@ -49,6 +70,7 @@ class App extends Component {
               {this.state.version}
             </span>
           </Title>
+          {upgradeButton}
           <a
             className="App-link"
             href="https://reactjs.org"
